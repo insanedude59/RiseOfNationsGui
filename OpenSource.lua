@@ -11,6 +11,21 @@ Keybind = Enum.KeyCode.RightShift -- Doesn't work
 }
 
 
+
+local suffixes = {"K", "M", "B", "T", "Q", "Qu", "S", "Se", "O", "N", "D"}
+local function toSuffixString(n)
+for i = #suffixes, 1, -1 do
+local v = math.pow(10, i * 3)
+if n >= v then
+return ("%.0f"):format(n / v) .. suffixes[i]
+end
+end
+return tostring(n)
+end
+
+
+
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/AlexR32/Roblox/main/BracketV3.lua"))()
 
 local Window = Library:CreateWindow(Config, game:GetService("CoreGui"))
@@ -369,9 +384,9 @@ Section2:CreateButton("Country Lookup",function()
         print(thisCountry)
         Stability.Text  = "Stability: "..countryData[thisCountry].Data.Stability.Value.."%"
         Name.Text = thisCountry
-        MA.Text = "Manpower Available: "..countryData[thisCountry].Manpower.Value.X
-        MI.Text = "Manpower Increase: "..countryData[thisCountry].Manpower.Value.Y
-        MC.Text = "Manpower Capacity: "..countryData[thisCountry].Manpower.Value.Z
+        MA.Text = "Manpower Available: "..toSuffixString(countryData[thisCountry].Manpower.Value.X)
+        MI.Text = "Manpower Increase: "..toSuffixString(countryData[thisCountry].Manpower.Value.Y)
+        MC.Text = "Manpower Capacity: "..toSuffixString(countryData[thisCountry].Manpower.Value.Z)
         RA.Text = "Ranking: #"..countryData[thisCountry].Ranking.Value
         if countryData[thisCountry].Ranking.Value>3 then
             Flag.BorderColor3 = Color3.new(229/255, 233/255, 235/255)
@@ -385,14 +400,14 @@ Section2:CreateButton("Country Lookup",function()
         Flag.Image = game.ReplicatedStorage.Assets.Flag[thisCountry].Texture
         income = require(workspace.FunctionDump.ValueCalc.CountryRevenue)
         expend = require(workspace.FunctionDump.ValueCalc.CountryExpenses)
-        IN.Text = "Income: $"..income(thisCountry)
-        EX.Text = "Expenses: $"..expend(thisCountry)
-        PR.Text = "Profit: $"..income(thisCountry)-expend(thisCountry)
+        IN.Text = "Income: $"..toSuffixString(income(thisCountry))
+        EX.Text = "Expenses: $"..toSuffixString(expend(thisCountry))
+        PR.Text = "Profit: $"..toSuffixString(income(thisCountry)-expend(thisCountry))
         MP.Text = "Military Power: "..countryData[thisCountry].Power.Military.Value
         PP.Text = "Political Power: "..countryData[thisCountry].Power.Political.Value
         RP.Text = "Research Points: "..countryData[thisCountry].Power.Research.Value
         WE.Text = "War Exhaustion: "..countryData[thisCountry].Power.WarExhaustion.Value
-        AT.Text = "Amount in Treasury: $"..countryData[thisCountry].Economy.Balance.Value
+        AT.Text = "Amount in Treasury: $"..toSuffixString(countryData[thisCountry].Economy.Balance.Value)
     end)
 end)
 
