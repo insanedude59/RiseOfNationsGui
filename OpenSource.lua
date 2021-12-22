@@ -54,7 +54,7 @@ workspace.GameManager.CreateBuilding:FireServer(ohTable1, ohString2)
 end)
 
 
-Section1:CreateDropdown("Efdsaghdsa", {"Aluminum","Oil","Phosphate","Diamond","Chromium","Uranium","Iron","Copper","Titanium","Tungsten","Gold"}, function(state)
+Section1:CreateDropdown("Build Mines on City with Selected Resource", {"Aluminum","Oil","Phosphate","Diamond","Chromium","Uranium","Iron","Copper","Titanium","Tungsten","Gold"}, function(state)
     local country = game:GetService("Players").LocalPlayer.leaderstats.Country.Value
 local resource = state
 
