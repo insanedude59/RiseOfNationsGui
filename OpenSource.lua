@@ -32,9 +32,26 @@ local Window = Library:CreateWindow(Config, game:GetService("CoreGui"))
 
 local Tab1 = Window:CreateTab("Main")
 
+local Tab2 = Window:CreateTab("UI Settings")
+
 local Section1 = Tab1:CreateSection("Main Section")
 
 local Section2 = Tab1:CreateSection("Misc")
+
+local Section3 = Tab2:CreateSection("UI")
+
+
+local Toggle3 = Section3:CreateToggle("UI Toggle", nil, function(State)
+	Window:Toggle(State)
+end)
+Toggle3:CreateKeybind(tostring(Config.Keybind):gsub("Enum.KeyCode.", ""), function(Key)
+	Config.Keybind = Enum.KeyCode[Key]
+end)
+
+local Colorpicker3 = Section3:CreateColorpicker("UI Color", function(Color)
+	Window:ChangeColor(Color)
+end)
+Colorpicker3:UpdateColor(Config.Color)
 
 Section2:CreateButton("Country Lookup",function()
   local Spy = Instance.new("ScreenGui")
