@@ -37,7 +37,7 @@ local Section1 = Tab1:CreateSection("Main Section")
 local Section2 = Tab1:CreateSection("Misc")
 
 Section2:CreateButton("Country Lookup",function()
-  local xSpy2Country = Instance.new("ScreenGui")
+  local Spy = Instance.new("ScreenGui")
             local Country = Instance.new("Frame")
             local TextLabel = Instance.new("TextLabel")
             local Search = Instance.new("TextBox")
@@ -59,12 +59,12 @@ Section2:CreateButton("Country Lookup",function()
             local TextLabel_2 = Instance.new("TextLabel")
             local WE = Instance.new("TextLabel")
             local Close = Instance.new("TextButton")
-            xSpy2Country.Name = "xSpy2Country"
-            xSpy2Country.Parent = game.CoreGui
-            xSpy2Country.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+            Spy.Name = "Spy"
+            Spy.Parent = game.CoreGui
+            Spy.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
             
             Country.Name = "Country"
-            Country.Parent = xSpy2Country
+            Country.Parent = Spy
             Country.Active = true
             Country.BackgroundColor3 = Color3.new(0.113725, 0.113725, 0.113725)
             Country.BorderSizePixel = 0
