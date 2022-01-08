@@ -1,6 +1,6 @@
 local Config = {
 
-WindowName = "Rise of Nations",
+WindowName = "Rise of Nations | RightShift for toggle keybind",
 
 Color = Color3.fromRGB(243,4,4),
 
